@@ -4,6 +4,7 @@
 #include <regex>
 #include <vector>
 #include <algorithm>
+#include <limits>
 using namespace std;
 
 struct Record {
@@ -64,7 +65,71 @@ int main() {
     cout << endl;
 
     if (vibor == 1) {
-        // Здесь будет добавление новой строки
+        string new_date, new_text, new_income_str;
+        int new_income;
+
+        // Ввод и проверка даты
+        while (true) {
+            cout << "Введите дату в формате ДД.ММ.ГГГГ: ";
+            cin >> new_date;
+
+            if (regex_match(new_date, date_regex)) {
+                break;
+            }
+            else {
+                cout << "Ошибка: неверный формат даты! Попробуйте снова." << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+        }
+
+        // Ввод и проверка суммы
+        while (true) {
+            cout << "Введите сумму (целое число): ";
+            cin >> new_income_str;
+
+            if (regex_match(new_income_str, number_regex)) {
+                try {
+                    new_income = stoi(new_income_str);
+                    break;
+                }
+                catch (const exception& e) {
+                    cout << "Ошибка: неверный формат числа! Попробуйте снова." << endl;
+                }
+            }
+            else {
+                cout << "Ошибка: сумма должна быть целым числом! Попробуйте снова." << endl;
+            }
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+
+        // Ввод и проверка источника
+        while (true) {
+            cout << "Введите источник дохода: ";
+            cin >> new_text;
+
+            if (regex_match(new_text, text_regex)) {
+                break;
+            }
+            else {
+                cout << "Ошибка: источник должен содержать только буквы! Попробуйте снова." << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+        }
+
+        // Добавление в файл
+        ofstream outfile("Test.txt", ios::app);
+        if (!outfile) {
+            cerr << "Не удалось открыть файл для записи!" << endl;
+            return 1;
+        }
+
+        outfile << new_date << " " << new_income << " \"" << new_text << "\"" << endl;
+        outfile.close();
+
+        cout << "Данные успешно добавлены в файл!" << endl;
     }
     else if (vibor == 2) {
         cout << "Надо ли отсортировать по убыванию дохода?\n\n";
