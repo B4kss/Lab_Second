@@ -21,7 +21,7 @@ bool checkDate(string date) {
         string part;
 
         while (getline(ss, part, '.'))
-            parts.push_back(part);
+            dateParts.push_back(part);
 
         if (parts[1] == "02" && Check_Leap_Year(stoi(parts[2])))
             if (stoi(parts[0]) > 29)
