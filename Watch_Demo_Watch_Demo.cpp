@@ -8,7 +8,7 @@
 #include <sstream>
 using namespace std;
 
-int Leap_Year(int year) {
+int Check_Leap_Year(int year) {
     return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
 
