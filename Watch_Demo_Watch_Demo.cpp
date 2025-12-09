@@ -16,18 +16,18 @@ bool checkDate(string date) {
     regex date_regex(R"(\b\d{2}\.\d{2}\.\d{4}\b)");
 
     if (regex_match(date, date_regex)) {
-        vector<string> date_parts;
+        vector<string> dateParts;
         stringstream ss(date);
         string part;
 
         while (getline(ss, part, '.'))
-            date_parts.push_back(part);
+            dateParts.push_back(part);
 
-        if (date_parts[1] == "02" && Check_Leap_Year(stoi(date_parts[2])))
-            if (stoi(date_parts[0]) > 29)
+        if (dateParts[1] == "02" && Leap_Year(stoi(dateParts[2])))
+            if (stoi(dateParts[0]) > 29)
                 return false;
 
-        if (stoi(date_parts[0]) > 31 || stoi(date_parts[1]) > 12)
+        if (stoi(dateParts[0]) > 31 || stoi(dateParts[1]) > 12)
             return false;
     }
 
