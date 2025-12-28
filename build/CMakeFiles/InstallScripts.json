@@ -1,0 +1,10 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/User/Desktop/Lab_Second/build/cmake_install.cmake",
+		"C:/Users/User/Desktop/Lab_Second/build/googletest/cmake_install.cmake",
+		"C:/Users/User/Desktop/Lab_Second/build/googletest/googlemock/cmake_install.cmake",
+		"C:/Users/User/Desktop/Lab_Second/build/googletest/googletest/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
